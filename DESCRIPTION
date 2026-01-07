@@ -1,0 +1,24 @@
+Package: lmrtools
+Title: Tools for managing Figure 4 LMR database
+Version: 0.0.0.9000
+Authors@R: 
+    person("John", "Yuill", , "john@fig4.com", role = c("aut", "cre"))
+Description: Collection of tools for accessing LMR database. Includes functions for
+    connecting to the database, querying data, and performing common data
+    manipulations.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Imports: 
+    DBI,
+    dplyr,
+    formattable,
+    glue,
+    here,
+    lubridate,
+    readr,
+    RPostgres,
+    scales,
+    stringr

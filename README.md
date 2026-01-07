@@ -52,3 +52,13 @@ It is expected the package will evolve. Main steps in updating (as far as I unde
 8.  `devtools::install()` to prepare for release.
 9.  Push to Github repo
 10. install updates in projects with `devtools::install_github('jyuill/lmrtools')`
+
+## Documentation
+
+Documentation is created for the package by using \#' comments. This documentation can be accessed via:
+
+-   **The Help Query:** Type `?get_lmr_data` or `help("fetch_db_basic")` in the console.
+
+-   **The Index:** Type `help(package = "lmrtools")` to see a list of every documented function in your library.
+
+-   **Autocomplete:** In Positron, when you start typing your function name, a hover-box will appear showing the title and parameters you wrote in your Roxygen comments.

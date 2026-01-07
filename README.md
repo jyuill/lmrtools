@@ -55,10 +55,18 @@ It is expected the package will evolve. Main steps in updating (as far as I unde
 
 ## Documentation
 
-Documentation is created for the package by using \#' comments. This documentation can be accessed via:
+Documentation is created for the package by using `#'` comments.
+
+-   Run `devtools::document()` to update documentation
+    -   will add/edit files to `/man` folder -\> do not make manual changes; manage through `#'` comments in package code
+-   DESCRIPTION file can be manually edited.
+
+Documentation can be accessed by users via:
 
 -   **The Help Query:** Type `?get_lmr_data` or `help("fetch_db_basic")` in the console.
 
 -   **The Index:** Type `help(package = "lmrtools")` to see a list of every documented function in your library.
+
+    -   provides access to the DESCRIPTION file
 
 -   **Autocomplete:** In Positron, when you start typing your function name, a hover-box will appear showing the title and parameters you wrote in your Roxygen comments.

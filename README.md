@@ -1,1 +1,54 @@
 # lmrtools
+
+An R package for working with Figure 4 LMR database. The main purpose is for **standardized queries to the database for purposes of reporting and analysis** in different contexts.
+
+## Installation
+
+\``devtools::install_github("jyuill/lmrtools")`\`
+
+> will need to reinstall any time there are updates.
+
+## Getting credentials
+
+To access the LMR database, you need to obtain credentials:
+
+-   db name
+-   host endpoint
+-   username
+-   password
+-   port number
+
+These are available from the package local repo or some other repos related to LMR work. Once you have these assembled:
+
+-   `usethis::edit_r_environ("project")`
+-   paste into **.Renviron** file that pops up
+-   *ENSURE to add .Renviron to .gitignore*
+
+## Usage
+
+Once installed, refer to `lmrtools::` to see available functions.
+
+Notable ones so far:
+
+-   `list_tables()` : all the tables for LMR, indeed everything in the Figure 4 database
+
+-   `fetch_db_basic()` : query any table in the database; defaults to lmr_data
+
+-   `fetch_lmr_complete_filter()` : most flexible option for retrieving LMR data, since it queries raw lmr_data table joined with additional quarter info and short versions of category type, category, and subcategory names. PLUS, can filter by category type, category, subcategory or date range (end of quarter date).
+
+    -   using parameter replace=TRUE in the function results in short names for category type, category, subcategory replacing original names
+
+## Updating
+
+It is expected the package will evolve. Main steps in updating (as far as I understand) are:
+
+1.  **database_functions.R**: add or edit functions as desired.
+2.  follow existing examples with use of \#' comments, @return, @parameters, @export, @import, etc.
+3.  use package names in functions: `DBI::dbConnect`
+4.  `devtools::use_package('<pkg name>')` if new packages are needed
+5.  `devtools::load_all()` to test locally.
+6.  `devtools::document()` to update documentation.
+7.  `devtools::check()` to run diagnostics
+8.  `devtools::install()` to prepare for release.
+9.  Push to Github repo
+10. install updates in projects with `devtools::install_github('jyuill/lmrtools')`

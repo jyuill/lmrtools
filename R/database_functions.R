@@ -151,6 +151,25 @@ fetch_lmr_complete_filter <- function(replace=FALSE,
       ) |> 
         dplyr::select(-cat_type_short, -category_short, -subcategory_short)
     }
+  lmr_data <- conversions(lmr_data_db)
   # pass back data
-  return(lmr_data_db)
+  return(lmr_data)
+}
+
+#' convert specified fields to factors and create cyr_qtr field
+#' @return A data frame with selected fields converted
+#' @param data A data frame of lmr data
+#' @importFrom dplyr mutate
+#' @importFrom stringr str_sub
+#' @export
+conversions <- function(data) {
+                data$cat_type <- as.factor(data$cat_type)
+                data$cqtr <- as.factor(data$cqtr)
+                data$cyr <- as.factor(data$cyr)
+                data <- data |> dplyr::mutate(
+                    cyr_qtr = paste(stringr::str_sub(cyr, start = 3, end = 4), cqtr, sep = "-")
+                    )
+                # save cyr as numerical value for filtering
+                data$cyr_num <- as.numeric(as.character(data$cyr))
+                return(data)
 }

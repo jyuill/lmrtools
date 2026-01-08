@@ -18,10 +18,12 @@ To access the LMR database, you need to obtain credentials:
 -   password
 -   port number
 
-These are available from the package local repo or some other repos related to LMR work. Once you have these assembled:
+These are available from the **local version of package repo** (NOT Github) or some other repos related to LMR work. Once you have these assembled:
 
--   `usethis::edit_r_environ("project")`
--   paste into **.Renviron** file that pops up
+-   `usethis::edit_r_environ(scope="user")`
+    -   "user" scope means will be available for any project on the computer
+    -   "project" in case just want to apply to individual project for some reason
+-   paste into **.Renviron** file that pops up (or may have to type if copy/paste doesn't work)
 -   *ENSURE to add .Renviron to .gitignore*
 
 ## Usage
@@ -48,7 +50,7 @@ It is expected the package will evolve. Main steps in updating (as far as I unde
 4.  `devtools::use_package('<pkg name>')` if new packages are needed
 5.  `devtools::load_all()` to test locally.
 6.  `devtools::document()` to update documentation.
-7.  `devtools::check()` to run diagnostics
+7.  `devtools::check()` to run diagnostics -\> address issues as needed.
 8.  `devtools::install()` to prepare for release.
 9.  Push to Github repo
 10. install updates in projects with `devtools::install_github('jyuill/lmrtools')`
